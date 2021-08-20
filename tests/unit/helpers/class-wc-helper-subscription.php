@@ -51,6 +51,13 @@ class WC_Subscription extends WC_Mock_WC_Data {
 	public $payment_method_title;
 
 	/**
+	 * Helper variable for mocking the subscription's status.
+	 *
+	 * @var string
+	 */
+	public $status;
+
+	/**
 	 * A helper function for handling function calls not yet implimented on this helper.
 	 *
 	 * Attempts to get the value by checking if it has been set as an object property.
@@ -116,5 +123,13 @@ class WC_Subscription extends WC_Mock_WC_Data {
 
 	public function get_payment_method_title() {
 		return $this->payment_method_title;
+	}
+
+	public function get_status() {
+		return $this->status;
+	}
+
+	public function has_status( $status ) {
+		return ( is_array( $status ) && in_array( $this->get_status(), $status, true ) ) || $this->get_status() === $status;
 	}
 }
